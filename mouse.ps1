@@ -1,8 +1,3 @@
-# Get cursor position
-# Write-Warning ([System.Windows.Forms.Cursor]::Position)
-
-# http://powershellcustoms.com/powershell-functions-to-move-mouse-cursor-and-do-a-click/
-
 Add-Type -AssemblyName System.Windows.Forms
 
 Function MoveMouse {
@@ -26,17 +21,3 @@ Function Click {
         $SendMouseClick::mouse_event(0x00000004, 0, 0, 0, 0);
     }
 }
-
-MoveMouse -x 27 -y 1104
-Click
-
-MoveMouse -x 279 -y 883
-Click
-
-# Dolby Audio
-# MoveMouse -x 279 -y 948
-# Click
-
-# DTS
-# MoveMouse -x 279 -y 1031
-# Click
