@@ -4,6 +4,12 @@ Supporting command line? cannot find
 
 Mouse?
 
+## To Hide Terminal of `no-encoder.bat`, `dd.bat` and `dts.bat`
+
+1. Make shortcut
+1. Open the shortcut property
+1. Change "Run" to "Minimized"
+
 ## [Search "powershell send mouse click"](https://www.google.com/search?q=powershell+send+mouse+click&newwindow=1&sca_esv=593400454&sxsrf=AM9HkKmPTbUyEcKSPyUJ9tvr7YIdRkoqsQ%3A1703415191788&ei=lw2IZZPZL5e0oATNsIewBw&oq=powershell+send+mou&gs_lp=Egxnd3Mtd2l6LXNlcnAiE3Bvd2Vyc2hlbGwgc2VuZCBtb3UqAggAMgoQIxiABBiKBRgnMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeSLISUABY2wtwAHgBkAEBmAHLAaAB_guqAQUwLjkuMbgBA8gBAPgBAcICChAAGIAEGIoFGEPCAg0QABiABBgUGIcCGLEDwgIIEAAYgAQYsQPCAgUQABiABMICCxAAGIAEGIoFGJECwgIKEAAYgAQYFBiHAuIDBBgAIEGIBgE&sclient=gws-wiz-serp)
 
 ### Activate window
