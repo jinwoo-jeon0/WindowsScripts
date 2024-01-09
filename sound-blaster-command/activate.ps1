@@ -9,7 +9,6 @@
 #
 # Activate Sound Blaster Command
 #
-# https://devblogs.microsoft.com/scripting/provide-input-to-applications-with-powershell/
 Add-Type -AssemblyName Microsoft.VisualBasic
 
 Function GetSBCommandProcesses {
@@ -25,10 +24,7 @@ if($running -and (0 -ne $processes[0].MainWindowHandle)) {
     exit
 }
 
-[Microsoft.VisualBasic.Interaction]::Shell(
-    "C:\Program Files (x86)\Creative\Sound Blaster Command\Creative.SBCommand.exe",
-    [Microsoft.VisualBasic.AppWinStyle]::NormalFocus
-)
+Start-Process -FilePath "C:\Program Files (x86)\Creative\Sound Blaster Command\Creative.SBCommand.exe"
 
 # Wait creating application window
 while ((GetSBCommandProcesses)[0].MainWindowHandle -eq 0) {
