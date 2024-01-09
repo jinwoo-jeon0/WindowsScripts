@@ -12,7 +12,13 @@
 # https://devblogs.microsoft.com/scripting/provide-input-to-applications-with-powershell/
 Add-Type -AssemblyName Microsoft.VisualBasic
 
-$processes = Get-Process | Where-Object { "Creative.SBCommand" -eq $_.ProcessName }
+Function GetSBCommandProcesses {
+    Process {
+        return Get-Process | Where-Object { "Creative.SBCommand" -eq $_.ProcessName }
+    }
+}
+
+$processes = GetSBCommandProcesses
 $running = 0 -ne $processes.length
 if($running -and (0 -ne $processes[0].MainWindowHandle)) {
     [Microsoft.VisualBasic.Interaction]::AppActivate($processes[0].Id)
@@ -25,7 +31,7 @@ if($running -and (0 -ne $processes[0].MainWindowHandle)) {
 )
 
 # Wait creating application window
-while (($processes = Get-Process | Where-Object { "Creative.SBCommand" -eq $_.ProcessName })[0].MainWindowHandle -eq 0) {
+while ((GetSBCommandProcesses)[0].MainWindowHandle -eq 0) {
     Start-Sleep -Milliseconds 500
 }
 
