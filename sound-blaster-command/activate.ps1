@@ -17,11 +17,20 @@ Function GetSBCommandProcesses {
     }
 }
 
+# https://learn.microsoft.com/en-us/archive/msdn-technet-forums/4d257c80-557a-4625-aad3-f2aac6e9a1bd
+$code = @'
+    [DllImport("user32.dll")]
+     public static extern IntPtr GetForegroundWindow();
+'@
+Add-Type $code -Name Utils -Namespace Win32
+$local:hwnd = [Win32.Utils]::GetForegroundWindow()
+$local:PrevProcess = Get-Process | Where-Object { $_.MainWindowHandle -eq $local:hwnd }
+
 $processes = GetSBCommandProcesses
 $running = 0 -ne $processes.length
 if($running -and (0 -ne $processes[0].MainWindowHandle)) {
     [Microsoft.VisualBasic.Interaction]::AppActivate($processes[0].Id)
-    exit
+    return $local:PrevProcess
 }
 
 Start-Process -FilePath "C:\Program Files (x86)\Creative\Sound Blaster Command\Creative.SBCommand.exe"
@@ -35,3 +44,5 @@ while ((GetSBCommandProcesses)[0].MainWindowHandle -eq 0) {
 if(-not $running) {
     Start-Sleep 5
 }
+
+return $local:PrevProcess
