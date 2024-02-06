@@ -21,3 +21,14 @@ Function Click {
         $SendMouseClick::mouse_event(0x00000004, 0, 0, 0, 0);
     }
 }
+
+Function ClickAndReturn {
+    Param ([int]$x, [int]$y)
+
+    Process {
+        $local:PrevPosition = [System.Windows.Forms.Cursor]::Position
+        MoveMouse -x $x -y $y
+        Click
+        MoveMouse -x $local:PrevPosition.x -y $local:PrevPosition.y
+    }
+}
