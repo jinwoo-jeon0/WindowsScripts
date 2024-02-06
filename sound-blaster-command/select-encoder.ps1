@@ -4,5 +4,4 @@ $ErrorActionPreference = "Stop"
 
 . "$PSScriptRoot\..\mouse.ps1"
 
-MoveMouse -x 27 -y 1104
-Click
+ClickAndReturn -x 27 -y 1104
