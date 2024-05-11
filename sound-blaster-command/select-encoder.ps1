@@ -8,7 +8,7 @@ function SelectEncoderAndFocusBack {
     Param([int]$x, [int]$y)
 
     Process {
-        ClickAndReturn -x 27 -y 1104
+        ClickAndReturn -x 27 -y 1114
         ClickAndReturn -x $x -y $y
 
         if(0 -ne $processes[0].MainWindowHandle) {
