@@ -1,3 +1,3 @@
 . "$PSScriptRoot\select-encoder.ps1"
 
-ClickAndReturn -x 279 -y 948
+SelectEncoderAndFocusBack -x 279 -y 948
