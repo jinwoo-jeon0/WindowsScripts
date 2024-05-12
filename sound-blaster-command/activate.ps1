@@ -26,10 +26,10 @@ Add-Type $code -Name Utils -Namespace Win32
 $local:hwnd = [Win32.Utils]::GetForegroundWindow()
 $local:PrevProcess = Get-Process | Where-Object { $_.MainWindowHandle -eq $local:hwnd }
 
-$processes = GetSBCommandProcesses
-$running = 0 -ne $processes.length
-if($running -and (0 -ne $processes[0].MainWindowHandle)) {
-    [Microsoft.VisualBasic.Interaction]::AppActivate($processes[0].Id)
+$local:processes = GetSBCommandProcesses
+$running = 0 -ne $local:processes.length
+if($running -and (0 -ne $local:processes[0].MainWindowHandle)) {
+    [Microsoft.VisualBasic.Interaction]::AppActivate($local:processes[0].Id)
     return $local:PrevProcess
 }
 
