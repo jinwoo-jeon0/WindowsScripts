@@ -4,6 +4,18 @@ $script:PrevProcess = . "$PSScriptRoot\activate.ps1"
 
 . "$PSScriptRoot\..\mouse.ps1"
 
+$encoders = @{
+    none = @{
+        position = New-Object System.Drawing.Point(279, 883)
+    }
+    dd = @{
+        position = New-Object System.Drawing.Point(279, 948)
+    }
+    dts = @{
+        position = New-Object System.Drawing.Point(279, 1031)
+    }
+}
+
 function SelectEncoderAndFocusBack {
     Param([int]$x, [int]$y)
 
