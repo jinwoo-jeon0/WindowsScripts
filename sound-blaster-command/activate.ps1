@@ -27,8 +27,8 @@ $local:hwnd = [Win32.Utils]::GetForegroundWindow()
 $local:PrevProcess = Get-Process | Where-Object { $_.MainWindowHandle -eq $local:hwnd }
 
 $local:processes = GetSBCommandProcesses
-$running = 0 -ne $local:processes.length
-if($running -and (0 -ne $local:processes[0].MainWindowHandle)) {
+$local:running = 0 -ne $local:processes.length
+if($local:running -and (0 -ne $local:processes[0].MainWindowHandle)) {
     [Microsoft.VisualBasic.Interaction]::AppActivate($local:processes[0].Id)
     return $local:PrevProcess
 }
@@ -41,7 +41,7 @@ while ((GetSBCommandProcesses)[0].MainWindowHandle -eq 0) {
 }
 
 # Wait initialization
-if(-not $running) {
+if(-not $local:running) {
     Start-Sleep 5
 }
 
